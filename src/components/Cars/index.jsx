@@ -19,7 +19,7 @@ function Cars() {
     <div className="Cars">
       <h1 className="title__main">Manage Cars</h1>
 
-      <button className="reservations__cta" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Car' }</button>
+      <button className="button--wide" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Car' }</button>
 
       { showForm ? <Create submit={ (data) => handleSubmit(data) }></Create> : null }
       <Table

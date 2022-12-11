@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Table from '../Table';
 import Create from './Create';
 import { reservations } from '../../utils.js';
-import './Reservations.css';
 
 const headers = ['id', 'user', 'car', 'from', 'to'];
 
@@ -26,7 +25,7 @@ function Reservations() {
   return (
     <div className="Reservations">
       <h1 className="title__main">Manage Reservations</h1>
-      <button className="reservations__cta" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Reservation' }</button>
+      <button className="button--wide" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Reservation' }</button>
 
       { showForm ? <Create submit={ (data) => handleSubmit(data) }></Create> : null }
 

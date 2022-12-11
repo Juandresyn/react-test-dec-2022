@@ -1,9 +1,4 @@
 import { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import "react-datepicker/dist/react-datepicker.css";
-import { transformDate } from '../../utils'
-
-const headers = ['id', 'user', 'car', 'from', 'to'];
 
 function CreateReservation({ submit }) {
   const [id, setId] = useState(null);
@@ -31,8 +26,6 @@ function CreateReservation({ submit }) {
     responseBody.ref = ref;
     responseBody.color = color;
     responseBody.milage = milage;
-    
-    console.log(JSON.stringify(responseBody))
 
     submit(responseBody);
   };

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import reactLogo from './assets/react.svg';
 import Cars from './components/Cars';
+import Users from './components/Users';
 import Reservations from './components/Reservations';
 import Logo from './assets/logo.png';
 import './App.css';
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/manage/users",
-    element: <Cars></Cars>,
+    element: <Users></Users>,
   },
   {
     path: "/manage/reservations",

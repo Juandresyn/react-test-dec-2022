@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { transformDate } from '../../utils'
-
-const headers = ['id', 'user', 'car', 'from', 'to'];
+import { transformDate } from '../../utils';
 
 function CreateReservation({ submit }) {
   const [user, setUser] = useState(null);
@@ -30,7 +28,6 @@ function CreateReservation({ submit }) {
     responseBody.from = transformDate(startDate);
     responseBody.to = transformDate(endDate);
     responseBody.notes = notes;
-    console.log(JSON.stringify(responseBody))
 
     submit(responseBody);
   };

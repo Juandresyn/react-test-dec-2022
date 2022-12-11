@@ -1,12 +1,36 @@
-export const transformDate = (date) => {
+export const transformDate = (date, showTime = true) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const hour = date.getHours();
     const minutes = date.getMinutes();
 
-    return `${year}-${month}-${day} ${hour}:${minutes}:00`
+    const time = `${hour}:${minutes}:00`;
+
+    return `${year}-${month}-${day} ${showTime ? time : ''}`
 };
+
+export const getAge = (dob) => {
+    const ageDifMs = Date.now() - new Date(dob).getTime();
+    const ageDate = new Date(ageDifMs);
+
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+export const users = [
+    {
+        id: '23456789',
+        name: 'Pepito',
+        lastName: 'Perez',
+        dob: '1973-06-12'
+    },
+    {
+        id: '12345678',
+        name: 'Juan',
+        lastName: 'Yepes',
+        dob: '1992-02-16'
+    }
+];
 
 export const cars = [
     {
