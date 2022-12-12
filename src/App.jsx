@@ -3,7 +3,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import reactLogo from './assets/react.svg';
 import Cars from './components/Cars';
 import Users from './components/Users';
 import Reservations from './components/Reservations';
@@ -30,8 +29,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
       <div>
