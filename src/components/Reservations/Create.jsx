@@ -9,6 +9,10 @@ function CreateReservation({ submit }) {
   const [notes, setNotes] = useState(null);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState();
+
+  /**
+   * Default object representation
+   */
   const responseBody = {
     userId: '',
     carId: '',
@@ -17,10 +21,9 @@ function CreateReservation({ submit }) {
     notes: ''
   };
 
-  const handleColor = (time) => {
-    return time.getHours() > 12 ? "text-success" : "text-error";
-  };
-
+  /**
+   * Handle form submit
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
     responseBody.userId = parseInt(user);
@@ -32,6 +35,9 @@ function CreateReservation({ submit }) {
     submit(responseBody);
   };
 
+  /**
+   * Handle form when and input changes its value.
+   */
   const inputChangeHandler = (setFunction, event) => setFunction(event.target.value);
 
   return (
@@ -43,7 +49,6 @@ function CreateReservation({ submit }) {
             <DatePicker
               selected={startDate}
               showTimeSelect
-              timeClassName={handleColor}
               onChange={(date) => setStartDate(date)}
               minDate={new Date()}
               selectsStart
@@ -54,7 +59,6 @@ function CreateReservation({ submit }) {
             <DatePicker
               selected={endDate}
               showTimeSelect
-              timeClassName={handleColor}
               onChange={(date) => setEndDate(date)}
               selectsEnd
               startDate={startDate}

@@ -17,15 +17,28 @@ const transformRows = (row) => (row && row.name ? {
 function Users() {
   const [showForm, setShowForm] = useState(false);
   const [userList, setUserList] = useState([]);
+
+  /**
+   * Initialize useFetch
+   */
   const { get, post, del, response, loading, error } = useFetch(VITE_ENDPOINT_BASE_URL, { data: [] });
 
+  /**
+   * Load users from endpoint
+   */
   const loadInitialUsers = useCallback(async () => {
     const initialUsers = await get("/api/users");
     if (response.ok) setUserList(initialUsers.data)
   }, [get, response]);
 
-  useEffect(() => { loadInitialUsers() }, [loadInitialUsers]) // componentDidMount
+  /**
+   * componentDidMount
+   */
+  useEffect(() => { loadInitialUsers() }, [loadInitialUsers]);
 
+  /**
+   * send new user data to the server for creation
+   */
   const postNewUser = useCallback(async (data) => {
     if (!!data && !data.id) return;
     const newUser = await post('/api/users', data);
@@ -34,8 +47,11 @@ function Users() {
       setUserList(items => [newUser.data, ...items]);
       setShowForm(showForm => false);
     }
-  }, [post, response, userList])
+  }, [post, response, userList]);
 
+  /**
+   * Ask server to delete an existing user
+   */
   const deleteUser = useCallback(async (id) => {
     await del(`/api/users/${id}`);
 
@@ -44,6 +60,9 @@ function Users() {
     }
   }, [del, response, userList])
 
+  /**
+   * Handle for when <Create> is submitted
+   */
   const handleSubmit = (data) => {
     postNewUser(data);
   };
@@ -55,6 +74,7 @@ function Users() {
       <button className="button--wide" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create User' }</button>
 
       { showForm ? <Create submit={ (data) => handleSubmit(data) }></Create> : null }
+
       <Table
         headers={headers}
         items={userList.map(transformRows)}

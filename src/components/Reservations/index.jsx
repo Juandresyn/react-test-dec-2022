@@ -19,14 +19,27 @@ function Reservations() {
   const [showForm, setShowForm] = useState(false);
   const [reservationsList, setReservationsList] = useState([]);
 
+  /**
+   * Initialize useFetch
+   */
   const { get, post, del, response, loading, error } = useFetch(VITE_ENDPOINT_BASE_URL, { data: [] });
+
+  /**
+   * Load reservations from endpoint
+   */
   const loadInitialReservations = useCallback(async () => {
     const initialReservations = await get("/api/reservations");
     if (response.ok) setReservationsList(initialReservations.data)
   }, [get, response]);
 
-  useEffect(() => { loadInitialReservations() }, [loadInitialReservations]) // componentDidMount
+  /**
+   * componentDidMount
+   */
+  useEffect(() => { loadInitialReservations() }, [loadInitialReservations]);
 
+  /**
+   * send new reservation data to the server for creation
+   */
   const postNewReserv = useCallback(async (data) => {
     if (!!data && !data.userId) return;
     const newReserv = await post('/api/reservations', data);
@@ -37,6 +50,9 @@ function Reservations() {
     }
   }, [post, response, reservationsList])
 
+  /**
+   * Ask server to delete an existing reservation.
+   */
   const deleteReserv = useCallback(async (id) => {
     await del(`/api/reservations/${id}`);
 
@@ -45,6 +61,9 @@ function Reservations() {
     }
   }, [del, response, reservationsList])
 
+  /**
+   * Handle for when <Create> is submitted
+   */
   const handleSubmit = async (data) => {
     postNewReserv(data);
   };

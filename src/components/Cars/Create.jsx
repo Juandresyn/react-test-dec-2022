@@ -8,6 +8,9 @@ function CreateReservation({ submit }) {
   const [color, setColor] = useState(null);
   const [milage, setMilage] = useState(null);
 
+  /**
+   * Default object representation
+   */
   const responseBody = {
     id: '',
     maker: '',
@@ -17,6 +20,9 @@ function CreateReservation({ submit }) {
     milage: 0
   };
 
+  /**
+   * Handle form submit
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
 

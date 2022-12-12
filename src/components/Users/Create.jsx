@@ -9,6 +9,9 @@ function CreateReservation({ submit }) {
   const [lastname, setLastname] = useState(null);
   const [dob, setDob] = useState(null);
 
+  /**
+   * Default object representation
+   */
   const responseBody = {
     id: '',
     name: '',
@@ -16,6 +19,9 @@ function CreateReservation({ submit }) {
     dob: null
   };
 
+  /**
+   * Handle form submit
+   */
   const handleSubmit = (event) => {
     event.preventDefault();
 
