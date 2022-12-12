@@ -2,7 +2,6 @@ import { useState, useCallback, useEffect } from 'react';
 import useFetch, { Provider } from 'use-http';
 import Table from '../Table';
 import Create from './Create';
-import { cars } from '../../utils.js';
 
 const headers = ['id', 'license', 'maker', 'model', 'ref', 'color', 'milage'];
 const { VITE_ENDPOINT_BASE_URL }  = import.meta.env;
