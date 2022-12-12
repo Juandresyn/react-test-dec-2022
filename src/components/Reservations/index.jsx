@@ -1,26 +1,55 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import useFetch, { Provider } from 'use-http';
 import Table from '../Table';
 import Create from './Create';
-import { reservations } from '../../utils.js';
 
 const headers = ['id', 'user', 'car', 'from', 'to'];
 
-const transformRows = (row) => ({
-  user: `${ row.user.name } ${ row.user.lastName }`,
+const transformRows = (row) => (row.user ? {
+  id: row.id,
+  user: `${ row.user.name } ${ row.user.lastname }`,
   car: `${ row.car.ref } ${ row.car.model } ${ row.car.color }`,
   from: row.from,
   to: row.to
-});
+} : {});
+
+const { VITE_ENDPOINT_BASE_URL }  = import.meta.env;
 
 function Reservations() {
   const [showForm, setShowForm] = useState(false);
-  const [reservationsList, setReservationsList] = useState(reservations);
+  const [reservationsList, setReservationsList] = useState([]);
 
-  const handleSubmit = (data) => {
-    setReservationsList(items => [...items, data]);
+  const { get, post, del, response, loading, error } = useFetch(VITE_ENDPOINT_BASE_URL, { data: [] });
+  const loadInitialReservations = useCallback(async () => {
+    const initialReservations = await get("/api/reservations");
+    if (response.ok) setReservationsList(initialReservations.data)
+  }, [get, response]);
 
-    setShowForm(showForm => false);
+  useEffect(() => { loadInitialReservations() }, [loadInitialReservations]) // componentDidMount
+
+  const postNewReserv = useCallback(async (data) => {
+    if (!!data && !data.userId) return;
+    const newReserv = await post('/api/reservations', data);
+
+    if (response.ok) {
+      setReservationsList(items => [newReserv.reservation, ...items]);
+      setShowForm(showForm => false);
+    }
+  }, [post, response, reservationsList])
+
+  const deleteReserv = useCallback(async (id) => {
+    await del(`/api/reservations/${id}`);
+
+    if (response.ok) {
+      loadInitialReservations();
+    }
+  }, [del, response, reservationsList])
+
+  const handleSubmit = async (data) => {
+    postNewReserv(data);
   };
+
+
 
   return (
     <div className="Reservations">
@@ -31,7 +60,10 @@ function Reservations() {
 
       <Table
         headers={ headers }
-        items={ reservationsList.map(transformRows) }></Table>
+        items={ reservationsList.map(transformRows) }
+        options={({
+          remove: deleteReserv
+        })}></Table>
     </div>
   )
 }

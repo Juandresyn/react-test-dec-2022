@@ -10,8 +10,8 @@ function CreateReservation({ submit }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState();
   const responseBody = {
-    user: '',
-    car: '',
+    userId: '',
+    carId: '',
     from: null,
     to: null,
     notes: ''
@@ -23,8 +23,8 @@ function CreateReservation({ submit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    responseBody.user = user;
-    responseBody.car = car;
+    responseBody.userId = parseInt(user);
+    responseBody.carId = car;
     responseBody.from = transformDate(startDate);
     responseBody.to = transformDate(endDate);
     responseBody.notes = notes;
