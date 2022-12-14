@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Reservations /> component Should call endpoint 1`] = `
+<DocumentFragment>
+  <div
+    class="Reservations"
+  >
+    <h1
+      class="title__main"
+    >
+      Manage Reservations
+    </h1>
+    <button
+      class="button--wide"
+      role="button"
+      type="button"
+    >
+      Create Reservation
+    </button>
+    0 reservations found
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            USER
+          </th>
+          <th>
+            CAR
+          </th>
+          <th>
+            FROM
+          </th>
+          <th>
+            TO
+          </th>
+          <th>
+            OPTIONS
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Test <Reservations /> component Should call endpoint 2`] = `
+<DocumentFragment>
+  <div
+    class="Reservations"
+  >
+    <h1
+      class="title__main"
+    >
+      Manage Reservations
+    </h1>
+    <button
+      class="button--wide"
+      role="button"
+      type="button"
+    >
+      Create Reservation
+    </button>
+    2 reservations found
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            USER
+          </th>
+          <th>
+            CAR
+          </th>
+          <th>
+            FROM
+          </th>
+          <th>
+            TO
+          </th>
+          <th>
+            OPTIONS
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          id="rid-20221210-000001"
+        >
+          <td>
+            rid-20221210-000001
+          </td>
+          <td>
+            Juan undefined
+          </td>
+          <td>
+            GLC300 2023 blue
+          </td>
+          <td>
+            2022-12-10 10:00:00
+          </td>
+          <td>
+            2022-12-20 11:00:00
+          </td>
+          <td>
+            <button
+              id="remove__rid-20221210-000001"
+              role="button"
+              type="button"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+        <tr
+          id="rid-20221210-000002"
+        >
+          <td>
+            rid-20221210-000002
+          </td>
+          <td>
+            Pepito undefined
+          </td>
+          <td>
+            Q5 2020 white
+          </td>
+          <td>
+            2022-12-10 10:30:00
+          </td>
+          <td>
+            2022-12-20 11:10:00
+          </td>
+          <td>
+            <button
+              id="remove__rid-20221210-000002"
+              role="button"
+              type="button"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;

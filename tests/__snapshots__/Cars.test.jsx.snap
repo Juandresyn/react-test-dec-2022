@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Car /> component Should call endpoint 1`] = `
+<DocumentFragment>
+  <div
+    class="Cars"
+  >
+    <h1
+      class="title__main"
+    >
+      Manage Cars
+    </h1>
+    <button
+      class="button--wide"
+      role="button"
+      type="button"
+    >
+      Create Car
+    </button>
+    0 cars found
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            LICENSE
+          </th>
+          <th>
+            MAKER
+          </th>
+          <th>
+            MODEL
+          </th>
+          <th>
+            REF
+          </th>
+          <th>
+            COLOR
+          </th>
+          <th>
+            MILAGE
+          </th>
+          <th>
+            OPTIONS
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Test <Car /> component Should call endpoint 2`] = `
+<DocumentFragment>
+  <div
+    class="Cars"
+  >
+    <h1
+      class="title__main"
+    >
+      Manage Cars
+    </h1>
+    <button
+      class="button--wide"
+      role="button"
+      type="button"
+    >
+      Create Car
+    </button>
+    3 cars found
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            LICENSE
+          </th>
+          <th>
+            MAKER
+          </th>
+          <th>
+            MODEL
+          </th>
+          <th>
+            REF
+          </th>
+          <th>
+            COLOR
+          </th>
+          <th>
+            MILAGE
+          </th>
+          <th>
+            OPTIONS
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <button
+              id="remove__undefined"
+              role="button"
+              type="button"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              id="remove__undefined"
+              role="button"
+              type="button"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              id="remove__undefined"
+              role="button"
+              type="button"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;

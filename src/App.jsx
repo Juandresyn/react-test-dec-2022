@@ -1,34 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from 'react';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Cars from './components/Cars';
+import Users from './components/Users';
+import Reservations from './components/Reservations';
+import Logo from './assets/logo.png';
+import './App.css';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <h1>Rent-a-Car</h1>,
+  },
+  {
+    path: "/manage/cars",
+    element: <Cars></Cars>,
+  },
+  {
+    path: "/manage/users",
+    element: <Users></Users>,
+  },
+  {
+    path: "/manage/reservations",
+    element: <Reservations></Reservations>,
+  },
+]);
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href="/">
+          <img src={ Logo } className="logo" alt="Company Logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <main className="main">
+        <nav className="toolbar">
+          <ul className="menu">
+            <li>
+              <a href="/manage/cars">Manage Cars</a>
+            </li>
+            <li>
+              <a href="/manage/users">Manage Users</a>
+            </li>
+            <li>
+              <a href="/manage/reservations">Manage Reservations</a>
+            </li>
+          </ul>
+        </nav>
+        <div className="content">
+          <RouterProvider router={router} />
+        </div>
+      </main>
     </div>
   )
 }
 
-export default App
+export default App;

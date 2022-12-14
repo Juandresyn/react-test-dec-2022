@@ -27,7 +27,6 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -54,6 +53,46 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.button--wide {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+.form__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__group > * {
+  width: 49% !important;
+}
+
+.form__wrapper input,
+.form__wrapper select,
+.form__wrapper textarea {
+  width: 100%;
+  padding: 15px 10px;
+  border: 1px solid #cdcdcd;
+  border-radius: 3px;
+  margin-bottom: 14px;
+  box-sizing: border-box;
+}
+
+.title__main {
+  text-align: left;
 }
 
 @media (prefers-color-scheme: light) {
