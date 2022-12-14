@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import useFetch, { Provider } from 'use-http';
+import useFetch from 'use-http';
 import Table from '../Table';
 import Create from './Create';
 import { ENDPOINT_BASE_URL, RESERVATIONS_EP } from '../../config/api';
@@ -8,10 +8,10 @@ const headers = ['id', 'user', 'car', 'from', 'to'];
 
 const transformRows = (row) => (row.user ? {
   id: row.id,
-  user: `${ row.user.name } ${ row.user.lastname }`,
-  car: `${ row.car.ref } ${ row.car.model } ${ row.car.color }`,
+  user: `${row.user.name} ${row.user.lastname}`,
+  car: `${row.car.ref} ${row.car.model} ${row.car.color}`,
   from: row.from,
-  to: row.to
+  to: row.to,
 } : {});
 
 function Reservations() {
@@ -21,20 +21,22 @@ function Reservations() {
   /**
    * Initialize useFetch
    */
-  const { get, post, del, response, loading, error } = useFetch(ENDPOINT_BASE_URL, { data: [] });
+  const {
+    get, post, del, response, loading,
+  } = useFetch(ENDPOINT_BASE_URL, { data: [] });
 
   /**
    * Load reservations from endpoint
    */
   const loadInitialReservations = useCallback(async () => {
     const initialReservations = await get(RESERVATIONS_EP);
-    if (response.ok) setReservationsList(initialReservations.data)
+    if (response.ok) setReservationsList(initialReservations.data);
   }, [get, response]);
 
   /**
    * componentDidMount
    */
-  useEffect(() => { loadInitialReservations() }, [loadInitialReservations]);
+  useEffect(() => { loadInitialReservations(); }, [loadInitialReservations]);
 
   /**
    * send new reservation data to the server for creation
@@ -44,16 +46,16 @@ function Reservations() {
     const newReserv = await post(RESERVATIONS_EP, data);
 
     if (response.ok) {
-      setReservationsList(items => [newReserv.reservation, ...items]);
-      setShowForm(showForm => false);
+      setReservationsList((items) => [newReserv.reservation, ...items]);
+      setShowForm(() => false);
     }
-  }, [post, response, reservationsList])
+  }, [post, response, reservationsList]);
 
   /**
    * Ask server to delete an existing reservation.
    */
   const deleteReserv = useCallback(async (id) => {
-    await del(`${ RESERVATIONS_EP }/${id}`);
+    await del(`${RESERVATIONS_EP}/${id}`);
 
     if (response.ok) {
       loadInitialReservations();
@@ -70,20 +72,21 @@ function Reservations() {
   return (
     <div className="Reservations">
       <h1 className="title__main">Manage Reservations</h1>
-      <button role="button" className="button--wide" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Reservation' }</button>
+      <button role="button" type="button" className="button--wide" onClick={() => setShowForm((showFormVal) => !showFormVal)}>{ showForm ? 'Hide Form' : 'Create Reservation' }</button>
 
-      { showForm ? <Create submit={ (data) => handleSubmit(data) }></Create> : null }
+      { showForm ? <Create submit={(data) => handleSubmit(data)} /> : null }
 
-      { !loading ? `${ reservationsList.length } reservations found` : '' }
+      { !loading ? `${reservationsList.length} reservations found` : '' }
 
       <Table
-        headers={ headers }
-        items={ reservationsList.map(transformRows) }
+        headers={headers}
+        items={reservationsList.map(transformRows)}
         options={({
-          remove: deleteReserv
-        })}></Table>
+          remove: deleteReserv,
+        })}
+      />
     </div>
-  )
+  );
 }
 
 export default Reservations;

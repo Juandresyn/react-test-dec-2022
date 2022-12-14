@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import useFetch, { Provider } from 'use-http';
+import useFetch from 'use-http';
 import Table from '../Table';
 import Create from './Create';
 import { ENDPOINT_BASE_URL, CARS_EP } from '../../config/api';
@@ -20,7 +20,7 @@ const transformRows = (row) => (row && row.carId ? {
   model: row.model,
   ref: row.ref,
   color: row.color,
-  milage: row.milage
+  milage: row.milage,
 } : {});
 
 function Cars() {
@@ -30,7 +30,9 @@ function Cars() {
   /**
    * Initialize useFetch
    */
-  const { get, post, del, response, loading } = useFetch(ENDPOINT_BASE_URL, { data: [] });
+  const {
+    get, post, del, response, loading,
+  } = useFetch(ENDPOINT_BASE_URL, { data: [] });
   /**
    * Load cars from endpoint
    */
@@ -38,14 +40,14 @@ function Cars() {
     const initialCars = await get(CARS_EP);
 
     if (response.ok) {
-      setCarList(initialCars.data)
+      setCarList(initialCars.data);
     }
   }, [get, response]);
 
   /**
    * componentDidMount
    */
-  useEffect(() => { loadInitialCars() }, [loadInitialCars]);
+  useEffect(() => { loadInitialCars(); }, [loadInitialCars]);
 
   /**
    * send new car data to the server for creation
@@ -55,8 +57,8 @@ function Cars() {
     const newCar = await post(CARS_EP, data);
 
     if (response.ok) {
-      setCarList(items => [newCar.data, ...items]);
-      setShowForm(showForm => false);
+      setCarList((items) => [newCar.data, ...items]);
+      setShowForm(() => false);
     }
   }, [post, response, carList]);
 
@@ -64,10 +66,10 @@ function Cars() {
    * Ask server to delete an existing car.
    */
   const deleteCar = useCallback(async (id) => {
-    await del(`${ CARS_EP }/${id}`);
+    await del(`${CARS_EP}/${id}`);
 
     if (response.ok) {
-      setCarList(cars => cars.filter(c => c.id === id))
+      setCarList((cars) => cars.filter((c) => c.id === id));
     }
   }, [del, response, carList]);
 
@@ -82,18 +84,19 @@ function Cars() {
     <div className="Cars">
       <h1 className="title__main">Manage Cars</h1>
 
-      <button role="button" className="button--wide" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Car' }</button>
+      <button role="button" type="button" className="button--wide" onClick={() => setShowForm((showFormVal) => !showFormVal)}>{ showForm ? 'Hide Form' : 'Create Car' }</button>
 
-      { showForm ? <Create submit={ (data) => handleSubmit(data) }></Create> : null }
-      { !loading ? `${ carList.length } cars found` : '' }
+      { showForm ? <Create submit={(data) => handleSubmit(data)} /> : null }
+      { !loading ? `${carList.length} cars found` : '' }
       <Table
         headers={headers}
         items={carList.map(transformRows)}
         options={({
-          remove: deleteCar
-        })}></Table>
+          remove: deleteCar,
+        })}
+      />
     </div>
-  )
+  );
 }
 
 export default Cars;

@@ -77,10 +77,11 @@ button:focus-visible {
 }
 
 .form__group > * {
-  width: 49%;
+  width: 49% !important;
 }
 
 .form__wrapper input,
+.form__wrapper select,
 .form__wrapper textarea {
   width: 100%;
   padding: 15px 10px;

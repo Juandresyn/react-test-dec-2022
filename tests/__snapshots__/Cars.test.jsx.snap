@@ -13,6 +13,7 @@ exports[`Test <Car /> component Should call endpoint 1`] = `
     <button
       class="button--wide"
       role="button"
+      type="button"
     >
       Create Car
     </button>
@@ -67,6 +68,7 @@ exports[`Test <Car /> component Should call endpoint 2`] = `
     <button
       class="button--wide"
       role="button"
+      type="button"
     >
       Create Car
     </button>
@@ -108,6 +110,7 @@ exports[`Test <Car /> component Should call endpoint 2`] = `
             <button
               id="remove__undefined"
               role="button"
+              type="button"
             >
               Remove
             </button>
@@ -118,6 +121,7 @@ exports[`Test <Car /> component Should call endpoint 2`] = `
             <button
               id="remove__undefined"
               role="button"
+              type="button"
             >
               Remove
             </button>
@@ -128,6 +132,7 @@ exports[`Test <Car /> component Should call endpoint 2`] = `
             <button
               id="remove__undefined"
               role="button"
+              type="button"
             >
               Remove
             </button>

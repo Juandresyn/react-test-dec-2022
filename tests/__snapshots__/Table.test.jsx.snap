@@ -161,6 +161,7 @@ exports[`Test <Table /> component Remove button should display 1`] = `
           <button
             id="remove__NOF123"
             role="button"
+            type="button"
           >
             Remove
           </button>
@@ -191,6 +192,7 @@ exports[`Test <Table /> component Remove button should display 1`] = `
           <button
             id="remove__IHJ889"
             role="button"
+            type="button"
           >
             Remove
           </button>
@@ -221,6 +223,7 @@ exports[`Test <Table /> component Remove button should display 1`] = `
           <button
             id="remove__UUE654"
             role="button"
+            type="button"
           >
             Remove
           </button>

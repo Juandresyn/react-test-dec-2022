@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function CreateReservation({ submit }) {
   const [id, setId] = useState(null);
@@ -17,7 +18,7 @@ function CreateReservation({ submit }) {
     model: 0,
     ref: '',
     color: '',
-    milage: 0
+    milage: 0,
   };
 
   /**
@@ -41,16 +42,20 @@ function CreateReservation({ submit }) {
   return (
     <form className="form CreateReservation" onSubmit={handleSubmit}>
       <div className="form__wrapper">
-          <input role="textbox" type="text" placeholder="License" name="id" onChange={(e)=>inputChangeHandler(setId, e)} />
-          <input role="textbox" type="text" placeholder="Maker" name="maker" onChange={(e)=>inputChangeHandler(setMaker, e)} />
-          <input role="textbox" type="text" placeholder="Model" name="Model" onChange={(e)=>inputChangeHandler(setModel, e)} />
-          <input role="textbox" type="text" placeholder="Ref" name="Ref" onChange={(e)=>inputChangeHandler(setRef, e)} />
-          <input role="textbox" type="text" placeholder="Color" name="Color" onChange={(e)=>inputChangeHandler(setColor, e)} />
-          <input role="textbox" type="text" placeholder="Milage" name="Milage" onChange={(e)=>inputChangeHandler(setMilage, e)} />
+        <input role="textbox" type="text" placeholder="License" name="id" onChange={(e) => inputChangeHandler(setId, e)} />
+        <input role="textbox" type="text" placeholder="Maker" name="maker" onChange={(e) => inputChangeHandler(setMaker, e)} />
+        <input role="textbox" type="text" placeholder="Model" name="Model" onChange={(e) => inputChangeHandler(setModel, e)} />
+        <input role="textbox" type="text" placeholder="Ref" name="Ref" onChange={(e) => inputChangeHandler(setRef, e)} />
+        <input role="textbox" type="text" placeholder="Color" name="Color" onChange={(e) => inputChangeHandler(setColor, e)} />
+        <input role="textbox" type="text" placeholder="Milage" name="Milage" onChange={(e) => inputChangeHandler(setMilage, e)} />
       </div>
       <button role="button">Create Car</button>
     </form>
-  )
+  );
 }
+
+CreateReservation.propTypes = {
+  submit: PropTypes.func.isRequired,
+};
 
 export default CreateReservation;
