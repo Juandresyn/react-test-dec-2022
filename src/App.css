@@ -57,3 +57,25 @@
 .content {
   width: calc(100% - var(--nav-bar-width));
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+}
+
+.table tbody td {
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, .05)
+}

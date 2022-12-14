@@ -67,9 +67,9 @@ function CreateReservation({ submit }) {
               placeholderText="To"
             />
           </div>
-          <textarea name="notes" id="" cols="30" rows="5" placeholder="Notes" onChange={(e)=>inputChangeHandler(setNotes, e)}></textarea>
+          <textarea name="notes" id="notes" cols="30" rows="5" placeholder="Notes" onChange={(e)=>inputChangeHandler(setNotes, e)}></textarea>
       </div>
-      <button>Create Reservation</button>
+      <button role="button">Create Reservation</button>
     </form>
   )
 }

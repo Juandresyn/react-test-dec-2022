@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test <Users /> component Should call endpoint 1`] = `
+<DocumentFragment>
+  <div
+    class="Users"
+  >
+    <h1
+      class="title__main"
+    >
+      Manage Users
+    </h1>
+    <button
+      class="button--wide"
+      role="button"
+    >
+      Create User
+    </button>
+    0 users found
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            CEDULA
+          </th>
+          <th>
+            NAME
+          </th>
+          <th>
+            LASTNAME
+          </th>
+          <th>
+            AGE
+          </th>
+          <th>
+            OPTIONS
+          </th>
+        </tr>
+      </thead>
+      <tbody />
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Test <Users /> component Should call endpoint 2`] = `
+<DocumentFragment>
+  <div
+    class="Users"
+  >
+    <h1
+      class="title__main"
+    >
+      Manage Users
+    </h1>
+    <button
+      class="button--wide"
+      role="button"
+    >
+      Create User
+    </button>
+    2 users found
+    <table
+      class="table"
+    >
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            CEDULA
+          </th>
+          <th>
+            NAME
+          </th>
+          <th>
+            LASTNAME
+          </th>
+          <th>
+            AGE
+          </th>
+          <th>
+            OPTIONS
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td />
+          <td>
+            23456789
+          </td>
+          <td>
+            Pepito
+          </td>
+          <td />
+          <td>
+            49
+          </td>
+          <td>
+            <button
+              id="remove__undefined"
+              role="button"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td />
+          <td>
+            12345678
+          </td>
+          <td>
+            Juan
+          </td>
+          <td />
+          <td>
+            30
+          </td>
+          <td>
+            <button
+              id="remove__undefined"
+              role="button"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;

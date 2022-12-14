@@ -2,9 +2,9 @@ import { useState, useCallback, useEffect } from 'react';
 import useFetch, { Provider } from 'use-http';
 import Table from '../Table';
 import Create from './Create';
+import { ENDPOINT_BASE_URL, CARS_EP } from '../../config/api';
 
 const headers = ['id', 'license', 'maker', 'model', 'ref', 'color', 'milage'];
-const { VITE_ENDPOINT_BASE_URL }  = import.meta.env;
 
 /**
  * This method receives an object from an array
@@ -30,14 +30,16 @@ function Cars() {
   /**
    * Initialize useFetch
    */
-  const { get, post, del, response, loading, error } = useFetch(VITE_ENDPOINT_BASE_URL, { data: [] });
-
+  const { get, post, del, response, loading } = useFetch(ENDPOINT_BASE_URL, { data: [] });
   /**
    * Load cars from endpoint
    */
   const loadInitialCars = useCallback(async () => {
-    const initialCars = await get("/api/cars");
-    if (response.ok) setCarList(initialCars.data)
+    const initialCars = await get(CARS_EP);
+
+    if (response.ok) {
+      setCarList(initialCars.data)
+    }
   }, [get, response]);
 
   /**
@@ -50,24 +52,24 @@ function Cars() {
    */
   const postNewCar = useCallback(async (data) => {
     if (!!data && !data.id) return;
-    const newCar = await post('/api/cars', data);
+    const newCar = await post(CARS_EP, data);
 
     if (response.ok) {
       setCarList(items => [newCar.data, ...items]);
       setShowForm(showForm => false);
     }
-  }, [post, response, carList])
+  }, [post, response, carList]);
 
   /**
    * Ask server to delete an existing car.
    */
   const deleteCar = useCallback(async (id) => {
-    await del(`/api/cars/${id}`);
+    await del(`${ CARS_EP }/${id}`);
 
     if (response.ok) {
       setCarList(cars => cars.filter(c => c.id === id))
     }
-  }, [del, response, carList])
+  }, [del, response, carList]);
 
   /**
    * Handle for when <Create> is submitted
@@ -80,9 +82,10 @@ function Cars() {
     <div className="Cars">
       <h1 className="title__main">Manage Cars</h1>
 
-      <button className="button--wide" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Car' }</button>
+      <button role="button" className="button--wide" onClick={() => setShowForm((showForm) => !showForm)}>{ showForm ? 'Hide Form' : 'Create Car' }</button>
 
       { showForm ? <Create submit={ (data) => handleSubmit(data) }></Create> : null }
+      { !loading ? `${ carList.length } cars found` : '' }
       <Table
         headers={headers}
         items={carList.map(transformRows)}

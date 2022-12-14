@@ -1,5 +1,3 @@
-import './Table.css'
-
 /**
 * Returns array of values from an object
 */
@@ -22,9 +20,9 @@ function Table({ headers, items, options }) {
       <tbody>
         { items.map((i, index) => {
           return (
-            <tr key={`item_${index}`}>
+            <tr key={`item_${index}`} id={i.id}>
               { deconstructItem(i).map((value, index) => <td key={`td_${index}`}>{ value }</td> ) }
-              { hasRemove ? <td><button onClick={()=> options.remove(i.id)}>Remove</button></td> : null }
+              { hasRemove ? <td><button id={`remove__${ i.id }`} role="button" onClick={()=> options.remove(i.id)}>Remove</button></td> : null }
             </tr>
           )
         }) }

@@ -41,14 +41,14 @@ function CreateReservation({ submit }) {
   return (
     <form className="form CreateReservation" onSubmit={handleSubmit}>
       <div className="form__wrapper">
-          <input type="text" placeholder="License" name="id" onChange={(e)=>inputChangeHandler(setId, e)} />
-          <input type="text" placeholder="Maker" name="maker" onChange={(e)=>inputChangeHandler(setMaker, e)} />
-          <input type="text" placeholder="Model" name="Model" onChange={(e)=>inputChangeHandler(setModel, e)} />
-          <input type="text" placeholder="Ref" name="Ref" onChange={(e)=>inputChangeHandler(setRef, e)} />
-          <input type="text" placeholder="Color" name="Color" onChange={(e)=>inputChangeHandler(setColor, e)} />
-          <input type="text" placeholder="Milage" name="Milage" onChange={(e)=>inputChangeHandler(setMilage, e)} />
+          <input role="textbox" type="text" placeholder="License" name="id" onChange={(e)=>inputChangeHandler(setId, e)} />
+          <input role="textbox" type="text" placeholder="Maker" name="maker" onChange={(e)=>inputChangeHandler(setMaker, e)} />
+          <input role="textbox" type="text" placeholder="Model" name="Model" onChange={(e)=>inputChangeHandler(setModel, e)} />
+          <input role="textbox" type="text" placeholder="Ref" name="Ref" onChange={(e)=>inputChangeHandler(setRef, e)} />
+          <input role="textbox" type="text" placeholder="Color" name="Color" onChange={(e)=>inputChangeHandler(setColor, e)} />
+          <input role="textbox" type="text" placeholder="Milage" name="Milage" onChange={(e)=>inputChangeHandler(setMilage, e)} />
       </div>
-      <button>Create Car</button>
+      <button role="button">Create Car</button>
     </form>
   )
 }

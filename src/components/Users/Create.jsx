@@ -39,8 +39,8 @@ function CreateReservation({ submit }) {
     <form className="form CreateReservation" onSubmit={handleSubmit}>
       <div className="form__wrapper">
           <input type="number" placeholder="ID" name="id" onChange={(e)=>inputChangeHandler(setId, e)} />
-          <input type="text" placeholder="Name" name="maker" onChange={(e)=>inputChangeHandler(setName, e)} />
-          <input type="text" placeholder="Last Name" name="Model" onChange={(e)=>inputChangeHandler(setLastname, e)} />
+          <input type="text" placeholder="Name" name="name" onChange={(e)=>inputChangeHandler(setName, e)} />
+          <input type="text" placeholder="Last Name" name="lastname" onChange={(e)=>inputChangeHandler(setLastname, e)} />
           <DatePicker
               selected={dob}
               onChange={(date) => setDob(date)}
@@ -52,7 +52,7 @@ function CreateReservation({ submit }) {
               maxDate={Date.now()}
             />
       </div>
-      <button>Create User</button>
+      <button role="button">Create User</button>
     </form>
   )
 }
