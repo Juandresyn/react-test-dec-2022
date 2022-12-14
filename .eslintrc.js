@@ -30,5 +30,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'jsx-a11y/no-redundant-roles': 0,
     'react/button-has-type': 0,
+    'import/no-named-as-default': 0,
   },
 };
